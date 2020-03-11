@@ -28,5 +28,7 @@ public class Main {
         }else{
             System.out.println("No.");
         }
+        Date dzis = new Date(11,3,2020);
+        System.out.println(Date.calculateDaysFromBeginningOfXXCentury(dzis));
     }
 }

@@ -64,4 +64,32 @@ public class Date {
         Date date = new Date(Integer.parseInt(o[0]),Integer.parseInt(o[1]),Integer.parseInt(o[2]));
         return date;
     }
+    public static int calculateDaysFromBeginningOfXXCentury(Date date) {
+        int days = 0;
+        days = 365 * (date.year - 1900);
+        for (int i = 1900; i < date.year; i++) {
+            if ((i % 4 == 0 && i % 100 != 0) || (i%4==0 && i % 400 == 0)) {
+                days = days + 1;
+            }
+
+        }
+        if (date.month != 1){
+            for (int i = 1; i < date.month; i++) {
+                if (i == 4 || i == 6 || i == 9 || i == 11) {
+                    days = days + 30;
+                } else if (i == 2 && date.year%4==0) {
+                    days = days + 29;
+                } else if (i == 2) {
+                    days = days + 28;
+                } else {
+                    days = days + 31;
+                }
+
+            }
+
+    }
+        days = days + date.day;
+        days = days - 1;
+        return days;
+    }
 }
